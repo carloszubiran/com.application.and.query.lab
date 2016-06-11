@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-public class IndexController {
+public class selectVehicle {
 
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    private String indexGet(Model model) {
+    @RequestMapping(value = "/selectVehicle", method = RequestMethod.GET)
+    private String selectVehicleGet(Model model) {
 
-//        model.addAttribute("vehicleForm", new Vehicle());
+        model.addAttribute("selectVehicle", new Vehicle());
 
         return "selectVehicle";
 
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public String indexPost(Model model, @ModelAttribute("vehicleForm") Vehicle vehicle) {
+    @RequestMapping(value = "/selectVehicle", method = RequestMethod.POST)
+    public String selectVehiclePost(Model model, @ModelAttribute("selectVehicle") Vehicle vehicle) {
 
         vehicleRepository.save(vehicle);
 

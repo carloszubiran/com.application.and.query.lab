@@ -1,13 +1,45 @@
 package MVC.models;
 
+import javax.persistence.*;
+
 /**
  * Created by Carlos Zubiran on 5/9/2016.
  */
+
+@Entity
 public class VehicleModel{
 
-    private int VehicleModelId;
+
+    //region PROPERTIES
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer VehicleModelId;
+
+    @Version
+    private Integer version;
+
     private String VehicleModelName;
-    private int VehicleMakeId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private VehicleMake VehicleMake;
+
+    //endregion
+
+    //region CONSTRUCTORS
+
+    public VehicleModel() {
+        this.VehicleMake = new VehicleMake("");
+    }
+
+    public VehicleModel(String vehicleModelName, VehicleMake vehicleMake) {
+        VehicleModelName = vehicleModelName;
+        VehicleMake = vehicleMake;
+    }
+
+    //endregion
+
+    //region SETTERS AND GETTERS
 
     public int getVehicleModelId() {
         return VehicleModelId;
@@ -25,11 +57,17 @@ public class VehicleModel{
         VehicleModelName = vehicleModelName;
     }
 
-    public int getVehicleMakeId() {
-        return VehicleMakeId;
+    public VehicleMake getVehicleMake() {
+        return VehicleMake;
     }
 
-    public void setVehicleMakeId(int vehicleMakeId) {
-        VehicleMakeId = vehicleMakeId;
+    public void setVehicleMake(VehicleMake vehicleMake) {
+        VehicleMake = vehicleMake;
     }
+
+    //endregion
+
+
+
+
 }

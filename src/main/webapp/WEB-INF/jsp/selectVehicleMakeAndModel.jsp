@@ -1,0 +1,2 @@
+<%@include file="navbar.jsp"%>
+

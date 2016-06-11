@@ -1,23 +1,35 @@
 package MVC.models;
 
+import org.springframework.data.annotation.Version;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Carlos Zubiran on 5/9/2016.
  */
+
+@Entity
 public class Vehicle{
 
     //region PROPERTIES
 
-    private int VehicleId;
-    private int Year;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer VehicleId;
+
+    @Version
+    private Integer version;
+
+    private Integer Year;
     private String LicensePlate;
     private String VIN;
     private String Color;
-    private boolean IsPurchase;
-    private int PurchasePrice;
+    private Boolean IsPurchase;
+    private Integer PurchasePrice;
     private Date PurchaseDate;
-    private VehicleMake vehicleMake;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private VehicleModel vehicleModel;
 
     //endregion PROPERTIES
@@ -26,19 +38,17 @@ public class Vehicle{
 
     public Vehicle() {
 
-        vehicleMake = new VehicleMake();
         vehicleModel = new VehicleModel();
 
     }
 
-    public Vehicle(int vehicleId) {
+    public Vehicle(Integer vehicleId) {
         VehicleId = vehicleId;
     }
 
-    public Vehicle(int vehicleId, int year, String licensePlate,
-                   String VIN, String color, boolean isPurchase,
-                   int purchasePrice, Date purchaseDate,
-                   VehicleMake vehicleMake, VehicleModel vehicleModel) {
+    public Vehicle(Integer vehicleId, Integer year, String licensePlate,
+                   String VIN, String color, Boolean isPurchase,
+                   Integer purchasePrice, Date purchaseDate, VehicleModel vehicleModel) {
         VehicleId = vehicleId;
         Year = year;
         LicensePlate = licensePlate;
@@ -47,28 +57,35 @@ public class Vehicle{
         IsPurchase = isPurchase;
         PurchasePrice = purchasePrice;
         PurchaseDate = purchaseDate;
-        this.vehicleMake = vehicleMake;
         this.vehicleModel = vehicleModel;
     }
 
-//endregion
+    //endregion
 
     //region GETTERS / SETTERS
 
 
-    public int getVehicleId() {
+    public Integer getVehicleId() {
         return VehicleId;
     }
 
-    public void setVehicleId(int vehicleId) {
+    public void setVehicleId(Integer vehicleId) {
         VehicleId = vehicleId;
     }
 
-    public int getYear() {
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public Integer getYear() {
         return Year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         Year = year;
     }
 
@@ -96,19 +113,19 @@ public class Vehicle{
         Color = color;
     }
 
-    public boolean isPurchase() {
+    public Boolean getPurchase() {
         return IsPurchase;
     }
 
-    public void setPurchase(boolean purchase) {
+    public void setPurchase(Boolean purchase) {
         IsPurchase = purchase;
     }
 
-    public int getPurchasePrice() {
+    public Integer getPurchasePrice() {
         return PurchasePrice;
     }
 
-    public void setPurchasePrice(int purchasePrice) {
+    public void setPurchasePrice(Integer purchasePrice) {
         PurchasePrice = purchasePrice;
     }
 
@@ -118,14 +135,6 @@ public class Vehicle{
 
     public void setPurchaseDate(Date purchaseDate) {
         PurchaseDate = purchaseDate;
-    }
-
-    public VehicleMake getVehicleMake() {
-        return vehicleMake;
-    }
-
-    public void setVehicleMake(VehicleMake vehicleMake) {
-        this.vehicleMake = vehicleMake;
     }
 
     public VehicleModel getVehicleModel() {
@@ -164,17 +173,10 @@ public class Vehicle{
                 ", IsPurchase=" + IsPurchase +
                 ", PurchasePrice=" + PurchasePrice +
                 ", PurchaseDate=" + PurchaseDate +
-                ", vehicleMake=" + vehicleMake.getVehicleMakeName() +
                 ", vehicleModel=" + vehicleModel.getVehicleModelName() +
                 '}';
     }
 
     //endregion
-
-
-
-
-
-
 
 }
