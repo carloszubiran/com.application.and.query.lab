@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-public class selectVehicle {
+public class SelectVehicle {
 
     @Autowired
     private VehicleRepository vehicleRepository;
