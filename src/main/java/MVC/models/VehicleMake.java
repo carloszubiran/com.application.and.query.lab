@@ -24,7 +24,7 @@ public class VehicleMake{
     @Version
     private Integer version;
 
-    private String VehicleMakeName;
+    private String vehicleMakeName;
     private Date CreateDate;
 
     //endregion
@@ -35,7 +35,7 @@ public class VehicleMake{
     }
 
     public VehicleMake(String vehicleMakeName) {
-        this.VehicleMakeName = vehicleMakeName;
+        this.vehicleMakeName = vehicleMakeName;
     }
 
 
@@ -62,11 +62,11 @@ public class VehicleMake{
     }
 
     public String getVehicleMakeName() {
-        return VehicleMakeName;
+        return vehicleMakeName;
     }
 
     public void setVehicleMakeName(String vehicleMakeName) {
-        VehicleMakeName = vehicleMakeName;
+        vehicleMakeName = vehicleMakeName;
     }
 
     public Date getCreateDate() {
