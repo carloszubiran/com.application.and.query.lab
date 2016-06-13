@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * Created by Bipin on 6/13/2016.
  */
+//test
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {RepositoryConfiguration.class})
 public class VehicleModelRepositoryTest {
