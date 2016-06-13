@@ -1,8 +1,8 @@
 <nav class="">
-    <button formmethod="get" formaction="/selectVehicle">Select Vehicle</button>
-    <button formmethod="get" formaction="/selectVehicleMakeAndModel">Select Make and Model</button>
-    <button formmethod="get" formaction="/addVehicle">Add Vehicle</button>
-    <button formmethod="get" formaction="/addVehicleMakeAndModel">Add Make and Model</button>
-    <button formmethod="get" formaction="">blank</button>
-    <button formmethod="get" formaction="">blank</button>
+    <a href="/selectVehicle"><button>Select Vehicle</button></a>
+    <a href="/selectVehicleMakeAndModel"><button>Select Make and Model</button></a>
+    <a href="/addVehicle"><button>Add Vehicle</button></a>
+    <a href="/addVehicleMakeAndModel"><button>Add Make and Model</button></a>
+    <a href=""><button>blank</button></a>
+    <a href=""><button>blank</button></a>
 </nav>
