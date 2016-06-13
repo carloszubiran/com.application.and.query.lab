@@ -21,20 +21,20 @@ public class VehicleModel{
 
     private String VehicleModelName;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private VehicleMake VehicleMake;
+    @ManyToOne( fetch = FetchType.EAGER)
+    private VehicleMake vehicleMake;
 
     //endregion
 
     //region CONSTRUCTORS
 
     public VehicleModel() {
-        this.VehicleMake = new VehicleMake("");
+        this.vehicleMake = new VehicleMake("");
     }
 
     public VehicleModel(String vehicleModelName, VehicleMake vehicleMake) {
         VehicleModelName = vehicleModelName;
-        VehicleMake = vehicleMake;
+        this.vehicleMake = vehicleMake;
     }
 
     //endregion
@@ -58,11 +58,11 @@ public class VehicleModel{
     }
 
     public VehicleMake getVehicleMake() {
-        return VehicleMake;
+        return vehicleMake;
     }
 
     public void setVehicleMake(VehicleMake vehicleMake) {
-        VehicleMake = vehicleMake;
+        vehicleMake = vehicleMake;
     }
 
     //endregion
