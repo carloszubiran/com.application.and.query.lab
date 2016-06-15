@@ -14,14 +14,14 @@ public class VehicleModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer VehicleModelId;
+    private Integer vehicleModelId;
 
     @Version
     private Integer version;
 
-    private String VehicleModelName;
+    private String vehicleModelName;
 
-    @ManyToOne( fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private VehicleMake vehicleMake;
 
     //endregion
@@ -33,7 +33,7 @@ public class VehicleModel{
     }
 
     public VehicleModel(String vehicleModelName, VehicleMake vehicleMake) {
-        VehicleModelName = vehicleModelName;
+        this.vehicleModelName = vehicleModelName;
         this.vehicleMake = vehicleMake;
     }
 
@@ -41,20 +41,29 @@ public class VehicleModel{
 
     //region SETTERS AND GETTERS
 
-    public int getVehicleModelId() {
-        return VehicleModelId;
+
+    public Integer getVehicleModelId() {
+        return vehicleModelId;
     }
 
-    public void setVehicleModelId(int vehicleModelId) {
-        VehicleModelId = vehicleModelId;
+    public void setVehicleModelId(Integer vehicleModelId) {
+        this.vehicleModelId = vehicleModelId;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public String getVehicleModelName() {
-        return VehicleModelName;
+        return vehicleModelName;
     }
 
     public void setVehicleModelName(String vehicleModelName) {
-        VehicleModelName = vehicleModelName;
+        this.vehicleModelName = vehicleModelName;
     }
 
     public VehicleMake getVehicleMake() {
@@ -62,7 +71,7 @@ public class VehicleModel{
     }
 
     public void setVehicleMake(VehicleMake vehicleMake) {
-        vehicleMake = vehicleMake;
+        this.vehicleMake = vehicleMake;
     }
 
     //endregion

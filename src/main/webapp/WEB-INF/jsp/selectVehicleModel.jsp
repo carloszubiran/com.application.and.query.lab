@@ -4,15 +4,15 @@
 
 <div class="panel panel-default">
 
-    <h2></h2>
+    <h2>Select Vehicle Model</h2>
 
     <table class="table">
         <tr>
             <th>Vehicle Make</th>
             <th>Vehicle Model</th>
-            <th>Update</th>
+            <th>Edit</th>
         </tr>
-        <form:form modelAttribute="selectVehicleMakeAndModel" method="get" action="updateVehicleModel">
+        <form:form modelAttribute="selectVehicleModel" method="get" action="updateVehicleModel">
         <c:forEach var="model" items="${modelList}">
             <tr>
                 <td>

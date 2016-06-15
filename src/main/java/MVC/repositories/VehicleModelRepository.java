@@ -13,4 +13,7 @@ public interface VehicleModelRepository extends CrudRepository <VehicleModel, In
 
         List<VehicleModel> findAllByVehicleMake(VehicleMake vehicleMake);
 
+        List<VehicleModel> findAllByVehicleMakeVehicleMakeId(Integer vehicleMakeId);
+
+
 }

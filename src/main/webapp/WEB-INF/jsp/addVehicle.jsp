@@ -3,49 +3,74 @@
 
 <h2>Add a vehicle</h2>
 
-<form:form modelAttribute="vehicleForm" cssClass="container col-lg-4" method="post"  action="index">
+<form:form modelAttribute="vehicleForm" cssClass="container col-lg-4" method="post"  action="addVehicle">
 
     <fieldset class="">
-
+        <div class="input-group">
+            <span class="input-group-addon">Vehicle Make:</span>
+                <form:select id="vehicleMakeId" path="vehicleModel.vehicleMake" onchange="changeModelList()">
+                    <c:forEach var="make" items="${vehicleMakeList}">
+                        <c:choose>
+                            <c:when test="${make.vehicleMakeId == updateVehicleModelForm.vehicleMake.vehicleMakeId}">
+                                <option id="selected" selected="selected" value="${make.vehicleMakeId}">${make.vehicleMakeName}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <form:option value="${make.vehicleMakeId}">${make.vehicleMakeName}</form:option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </form:select>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Vehicle Model:</span>
+                <form:select id="vehicleModelList" path="vehicleModel">
+                    <c:forEach var="model" items="${vehicleModelList}">
+                        <form:option value="${model.vehicleModelId}">${model.vehicleModelName}</form:option>
+                    </c:forEach>
+                </form:select>
+        </div>
         <div class="input-group">
             <span class="input-group-addon">Year:</span>
-            <form:label path="Year" />
-            <form:input path="Year" cssClass="form-control" placeholder="Year"  id="Year"/>
+            <form:label path="year" />
+            <form:input path="year" cssClass="form-control" placeholder="year"  id="year"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon">License Plate:</span>
-            <form:label path="LicensePlate" />
-            <form:input path="LicensePlate" cssClass="form-control" placeholder="LicensePlate"  id="LicensePlate"/>
+            <form:label path="licensePlate" />
+            <form:input path="licensePlate" cssClass="form-control" placeholder="licensePlate"  id="licensePlate"/>
         </div>
         <div class="input-group">
-            <span class="input-group-addon">VIN:</span>
-            <form:label path="VIN" />
-            <form:input path="VIN" cssClass="form-control" placeholder="VIN"  id="VIN"/>
+            <span class="input-group-addon">vin:</span>
+            <form:label path="vin" />
+            <form:input path="vin" cssClass="form-control" placeholder="vin"  id="vin"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon">Color:</span>
-            <form:label path="Color" />
-            <form:input path="Color" cssClass="form-control" placeholder="Color"  id="Color"/>
+            <form:label path="color" />
+            <form:input path="color" cssClass="form-control" placeholder="color"  id="color"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon">Is Purchased?:</span>
-            <form:label path="Purchase" />
-            <form:input path="Purchase" cssClass="form-control" placeholder="Purchase"  id="Purchase"/>
+            <form:label path="purchase" />
+            <form:select path="purchase">
+                <form:option value="true">Yes</form:option>
+                <form:option value="false">No</form:option>
+            </form:select>
         </div>
         <div class="input-group">
             <span class="input-group-addon">Purchase Price:</span>
-            <form:label path="PurchasePrice" />
-            <form:input path="PurchasePrice" cssClass="form-control" placeholder="PurchasePrice"  id="PurchasePrice"/>
+            <form:label path="purchasePrice" />
+            <form:input path="purchasePrice" cssClass="form-control" placeholder="purchasePrice"  id="purchasePrice"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon">Purchase Date:</span>
-            <form:label path="PurchaseDate" cssClass="" />
-            <form:input path="PurchaseDate" cssClass="form-control" placeholder="PurchaseDate"  id="PurchaseDate"/>
+            <form:label path="purchaseDate" cssClass="" />
+            <form:input type="date" path="purchaseDate" cssClass="form-control" placeholder="purchaseDate"  id="purchaseDate"/>
         </div>
 
     </fieldset>
 
-    <form:button id="insertVehicle" name="submit" value="insertVehicle" />
+    <form:button id="addVehicle" name="submit" value="addVehicle">Add Vehicle</form:button>
 
 
 </form:form>

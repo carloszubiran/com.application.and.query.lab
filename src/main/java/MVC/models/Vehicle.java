@@ -1,7 +1,5 @@
 package MVC.models;
 
-import org.springframework.data.annotation.Version;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,20 +14,20 @@ public class Vehicle{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer VehicleId;
+    private Integer vehicleId;
 
     @Version
     private Integer version;
 
-    private Integer Year;
-    private String LicensePlate;
-    private String VIN;
-    private String Color;
-    private Boolean IsPurchase;
-    private Integer PurchasePrice;
-    private Date PurchaseDate;
+    private Integer year;
+    private String licensePlate;
+    private String vin;
+    private String color;
+    private Boolean isPurchase;
+    private Integer purchasePrice;
+    private Date purchaseDate;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private VehicleModel vehicleModel;
 
     //endregion PROPERTIES
@@ -38,25 +36,25 @@ public class Vehicle{
 
     public Vehicle() {
 
-        vehicleModel = new VehicleModel();
+        this.vehicleModel = new VehicleModel();
 
     }
 
     public Vehicle(Integer vehicleId) {
-        VehicleId = vehicleId;
+        this.vehicleId = vehicleId;
     }
 
     public Vehicle(Integer vehicleId, Integer year, String licensePlate,
-                   String VIN, String color, Boolean isPurchase,
+                   String vin, String color, Boolean isPurchase,
                    Integer purchasePrice, Date purchaseDate, VehicleModel vehicleModel) {
-        VehicleId = vehicleId;
-        Year = year;
-        LicensePlate = licensePlate;
-        this.VIN = VIN;
-        Color = color;
-        IsPurchase = isPurchase;
-        PurchasePrice = purchasePrice;
-        PurchaseDate = purchaseDate;
+        this.vehicleId = vehicleId;
+        this.year = year;
+        this.licensePlate = licensePlate;
+        this.vin = vin;
+        this.color = color;
+        this.isPurchase = isPurchase;
+        this.purchasePrice = purchasePrice;
+        this.purchaseDate = purchaseDate;
         this.vehicleModel = vehicleModel;
     }
 
@@ -64,13 +62,12 @@ public class Vehicle{
 
     //region GETTERS / SETTERS
 
-
     public Integer getVehicleId() {
-        return VehicleId;
+        return vehicleId;
     }
 
     public void setVehicleId(Integer vehicleId) {
-        VehicleId = vehicleId;
+        this.vehicleId = vehicleId;
     }
 
     public Integer getVersion() {
@@ -82,59 +79,59 @@ public class Vehicle{
     }
 
     public Integer getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(Integer year) {
-        Year = year;
+        this.year = year;
     }
 
     public String getLicensePlate() {
-        return LicensePlate;
+        return licensePlate;
     }
 
     public void setLicensePlate(String licensePlate) {
-        LicensePlate = licensePlate;
+        this.licensePlate = licensePlate;
     }
 
-    public String getVIN() {
-        return VIN;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
     public String getColor() {
-        return Color;
+        return color;
     }
 
     public void setColor(String color) {
-        Color = color;
+        this.color = color;
     }
 
     public Boolean getPurchase() {
-        return IsPurchase;
+        return isPurchase;
     }
 
     public void setPurchase(Boolean purchase) {
-        IsPurchase = purchase;
+        isPurchase = purchase;
     }
 
     public Integer getPurchasePrice() {
-        return PurchasePrice;
+        return purchasePrice;
     }
 
     public void setPurchasePrice(Integer purchasePrice) {
-        PurchasePrice = purchasePrice;
+        this.purchasePrice = purchasePrice;
     }
 
     public Date getPurchaseDate() {
-        return PurchaseDate;
+        return purchaseDate;
     }
 
     public void setPurchaseDate(Date purchaseDate) {
-        PurchaseDate = purchaseDate;
+        this.purchaseDate = purchaseDate;
     }
 
     public VehicleModel getVehicleModel() {
@@ -145,14 +142,15 @@ public class Vehicle{
         this.vehicleModel = vehicleModel;
     }
 
+
 //endregion GETTERS / SETTERS
 
     //region CUSTOM / METHODS
 
     public String getVinColorYearAndLicensePlateOfVehicle() {
 
-        return "Vin: " + getVIN() + ", Color: "
-                + getColor() + ", Year: " + getYear() + ", LicensePlate: " + getLicensePlate();
+        return "Vin: " + getVin() + ", color: "
+                + getColor() + ", year: " + getYear() + ", licensePlate: " + getLicensePlate();
 
     }
 
@@ -165,14 +163,14 @@ public class Vehicle{
     @Override
     public String toString() {
         return "Vehicle{" +
-                "VehicleId=" + VehicleId +
-                ", Year=" + Year +
-                ", LicensePlate='" + LicensePlate + '\'' +
-                ", VIN='" + VIN + '\'' +
-                ", Color='" + Color + '\'' +
-                ", IsPurchase=" + IsPurchase +
-                ", PurchasePrice=" + PurchasePrice +
-                ", PurchaseDate=" + PurchaseDate +
+                "vehicleId=" + vehicleId +
+                ", year=" + year +
+                ", licensePlate='" + licensePlate + '\'' +
+                ", vin='" + vin + '\'' +
+                ", color='" + color + '\'' +
+                ", isPurchase=" + isPurchase +
+                ", purchasePrice=" + purchasePrice +
+                ", purchaseDate=" + purchaseDate +
                 ", vehicleModel=" + vehicleModel.getVehicleModelName() +
                 '}';
     }

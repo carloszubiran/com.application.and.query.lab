@@ -27,7 +27,7 @@
         <fieldset class="">
             <div class="input-group">
                 <span class="input-group-addon">Make:</span>
-                <form:select path="VehicleMake" cssClass="form-control">
+                <form:select path="vehicleMake" cssClass="form-control">
                     <c:forEach var="make" items="${listOfVehicleMakes}">
                         <form:option value="${make.vehicleMakeId}" cssClass="form-control">${make.vehicleMakeName}</form:option>
                     </c:forEach>
@@ -36,8 +36,8 @@
             </div>
             <div class="input-group">
                 <span class="input-group-addon">Model:</span>
-                <form:label path="VehicleModelName" />
-                <form:input path="VehicleModelName" cssClass="form-control" placeholder="Model" id="Model"/>
+                <form:label path="vehicleModelName" />
+                <form:input path="vehicleModelName" cssClass="form-control" placeholder="Model" id="Model"/>
             </div>
         </fieldset>
 

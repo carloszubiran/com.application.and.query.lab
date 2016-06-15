@@ -17,9 +17,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <jackson.version>1.9.10</jackson.version>
     </properties>
-
 
     <dependencies>
         <!-- SPRING DATA (JPA / HIBERNATE) -->
@@ -84,13 +82,6 @@
             <version>4.2.6.RELEASE</version>
         </dependency>
 
-        <!-- Jackson JSON Mapper -->
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -125,3 +116,4 @@
 
 
 </project>
+

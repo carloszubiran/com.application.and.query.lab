@@ -1,11 +1,6 @@
 package MVC.models;
 
-import org.springframework.data.annotation.Version;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -19,13 +14,13 @@ public class VehicleMake{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer VehicleMakeId;
+    private Integer vehicleMakeId;
 
     @Version
     private Integer version;
 
     private String vehicleMakeName;
-    private Date CreateDate;
+    private Date createDate;
 
     //endregion
 
@@ -46,11 +41,11 @@ public class VehicleMake{
 
 
     public Integer getVehicleMakeId() {
-        return VehicleMakeId;
+        return vehicleMakeId;
     }
 
     public void setVehicleMakeId(Integer vehicleMakeId) {
-        VehicleMakeId = vehicleMakeId;
+        this.vehicleMakeId = vehicleMakeId;
     }
 
     public Integer getVersion() {
@@ -66,15 +61,15 @@ public class VehicleMake{
     }
 
     public void setVehicleMakeName(String vehicleMakeName) {
-        vehicleMakeName = vehicleMakeName;
+        this.vehicleMakeName = vehicleMakeName;
     }
 
     public Date getCreateDate() {
-        return CreateDate;
+        return createDate;
     }
 
     public void setCreateDate(Date createDate) {
-        CreateDate = createDate;
+        this.createDate = createDate;
     }
 
     //endregion

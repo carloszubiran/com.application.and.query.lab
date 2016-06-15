@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.stereotype.Repository;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.apache.log4j.Logger;
 import static org.junit.Assert.assertEquals;
@@ -42,7 +41,7 @@ public class VehiclesRepositoryTest {
         // setup vehicle
         Vehicle vehicle = new Vehicle();
         vehicle.setLicensePlate("jhfsdaasdf");
-        vehicle.setVIN("432432");
+        vehicle.setVin("432432");
         vehicle.setYear(1993);
         vehicle.setVehicleModel(new VehicleModel("Corola", new VehicleMake("Toyota")));
 
@@ -50,7 +49,7 @@ public class VehiclesRepositoryTest {
         assertNull(vehicle.getVehicleId());
         vehicleRepository.save(vehicle);
         assertNotNull(vehicle.getLicensePlate());
-        assertNotNull(vehicle.getVIN());
+        assertNotNull(vehicle.getVin());
         assertNotNull(vehicle.getYear());
         assertNotNull(vehicle.getVehicleModel());
         assertNotNull(vehicle.getVehicleId());
@@ -58,7 +57,7 @@ public class VehiclesRepositoryTest {
         // get the data from the data store and check it values
         for (Vehicle v: vehicleRepository.findAll()) {
             assertNotNull(v.getLicensePlate());
-            assertNotNull(v.getVIN());
+            assertNotNull(v.getVin());
             assertNotNull(v.getYear());
             assertNotNull(v.getVehicleModel());
             logger.info("This is the vehicle name :" + v.getVehicleModel().getVehicleModelName());
