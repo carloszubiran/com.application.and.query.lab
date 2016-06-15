@@ -22,16 +22,12 @@ public class IndexController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     private String indexGet(Model model) {
 
-//        model.addAttribute("vehicleForm", new Vehicle());
-
         return "selectVehicle";
 
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public String indexPost(Model model, @ModelAttribute("vehicleForm") Vehicle vehicle) {
-
-        vehicleRepository.save(vehicle);
+    public String indexPost(Model model) {
 
         return "redirect:/selectVehicle";
 

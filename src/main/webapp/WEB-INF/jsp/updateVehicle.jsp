@@ -1,7 +1,7 @@
 <%@include file="header.jsp"%>
 <%@include file="navbar.jsp"%>
 
-<div class="panel panel-default">
+<div>
 
     <h2>Update Vehicle</h2>
 
@@ -72,7 +72,20 @@
                         <form:input path="color" value="${updateVehicle.color}"/>
                     </td>
                     <td>
-                        <form:input path="purchase" value="${updateVehicle.purchase}"/>
+                        <form:select path="purchase">
+                        <c:choose>
+                            <c:when test="${updateVehicle.purchase == true}">
+                                <form:option value="true">
+                                    Yes
+                                </form:option>
+                            </c:when>
+                            <c:otherwise>
+                                <form:option value="true">
+                                    No
+                                </form:option>
+                            </c:otherwise>
+                        </c:choose>
+                        </form:select>
                     </td>
                     <td>
                         <form:input path="purchasePrice" value="${updateVehicle.purchasePrice}"/>

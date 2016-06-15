@@ -1,5 +1,6 @@
 package MVC.controllers;
 
+import MVC.helpers.DateHelper;
 import MVC.models.Vehicle;
 import MVC.models.VehicleModel;
 import MVC.repositories.VehicleMakeRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * Created by Carlos Zubiran on 6/15/2016.
@@ -36,10 +38,7 @@ public class VehicleController {
     @RequestMapping(value = "/addVehicle", method = RequestMethod.GET)
     String addVehicleGet(Model model) {
 
-        Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleModel(new VehicleModel());
-
-        model.addAttribute("vehicleForm", vehicle);
+        model.addAttribute("vehicleForm", new Vehicle());
         model.addAttribute("vehicleMakeList", vehicleMakeRepository.findAll());
         model.addAttribute("vehicleModelList", vehicleModelRepository.findAllByVehicleMakeVehicleMakeId(1));
         return "addVehicle";
@@ -47,24 +46,12 @@ public class VehicleController {
 
 
     @RequestMapping(value = "/addVehicle", method = RequestMethod.POST)
-    String addVehiclePost(Model model, @ModelAttribute("vehicleForm") @Valid Vehicle vehicle,
-                          BindingResult bindingResultVehicle) {
+    String addVehiclePost(Model model, @ModelAttribute("vehicleForm") Vehicle vehicle) {
 
-        logger.info("vehicle to string: " + vehicle.toString());
-        if (bindingResultVehicle.hasErrors()) {
-            return "form";
-        }
-
-
-        System.out.println(vehicle.getVin());
-        System.out.println(vehicle.getVinColorYearAndLicensePlateOfVehicle());
-        System.out.println(vehicle.getYear());
-        System.out.println(vehicle.getPurchase());
-        System.out.println(vehicle.getPurchaseDate().toString());
-        System.out.println(vehicle.getVin());
-
+        vehicle.setVehicleModel(vehicleModelRepository.findOne(vehicle.getVehicleModel().getVehicleModelId()));
 
         vehicleRepository.save(vehicle);
+
         return "redirect:selectVehicle";
 
     }
@@ -105,6 +92,7 @@ public class VehicleController {
     String updateVehiclePost(Model model,
                              @ModelAttribute(value = "updateVehicle") Vehicle vehicle) {
 
+        vehicle.setVehicleModel(vehicleModelRepository.findOne(vehicle.getVehicleModel().getVehicleModelId()));
         vehicleRepository.save(vehicle);
         return "redirect:selectVehicle";
 

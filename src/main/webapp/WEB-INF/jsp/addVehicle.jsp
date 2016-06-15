@@ -23,7 +23,7 @@
         </div>
         <div class="input-group">
             <span class="input-group-addon">Vehicle Model:</span>
-                <form:select id="vehicleModelList" path="vehicleModel">
+                <form:select id="vehicleModelList" path="vehicleModel.vehicleModelId">
                     <c:forEach var="model" items="${vehicleModelList}">
                         <form:option value="${model.vehicleModelId}">${model.vehicleModelName}</form:option>
                     </c:forEach>
@@ -64,8 +64,9 @@
         </div>
         <div class="input-group">
             <span class="input-group-addon">Purchase Date:</span>
-            <form:label path="purchaseDate" cssClass="" />
-            <form:input type="date" path="purchaseDate" cssClass="form-control" placeholder="purchaseDate"  id="purchaseDate"/>
+            <fmt:formatDate var="parsedDate" type="date" pattern="yyyy-MM-dd" dateStyle="short" value="${vehicleForm.purchaseDate}"/>
+            <form:input path="purchaseDate" type="date" value="${parsedDate}"/>
+
         </div>
 
     </fieldset>

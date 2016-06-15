@@ -1,5 +1,8 @@
 package MVC.models;
 
+import MVC.helpers.DateHelper;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,6 +28,10 @@ public class Vehicle{
     private String color;
     private Boolean isPurchase;
     private Integer purchasePrice;
+
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date purchaseDate;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
@@ -35,9 +42,8 @@ public class Vehicle{
     //region CONSTRUCTORS
 
     public Vehicle() {
-
+        this.purchaseDate = new Date();
         this.vehicleModel = new VehicleModel();
-
     }
 
     public Vehicle(Integer vehicleId) {
@@ -132,6 +138,10 @@ public class Vehicle{
 
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
+    }
+
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = DateHelper.stringToUtilDate(purchaseDate, "yyyy-MM-dd");
     }
 
     public VehicleModel getVehicleModel() {

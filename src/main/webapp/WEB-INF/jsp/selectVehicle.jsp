@@ -54,7 +54,14 @@
                         ${vehicle.color}
                     </td>
                     <td>
-                        ${vehicle.purchase}
+                        <c:choose>
+                            <c:when test="${vehicle.purchase == true}">
+                                Yes
+                            </c:when>
+                            <c:otherwise>
+                                    No
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                     <td>
                         ${vehicle.purchasePrice}
